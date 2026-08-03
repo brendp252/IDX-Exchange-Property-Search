@@ -1,0 +1,10 @@
+.property-card {
+    border: 3px solid #fff;
+    margin-top: 2rem;
+    padding: 0.5em;
+}
+
+.property-card__photo {
+    border: 1px solid #fff;
+    margin-top: 1rem;
+}
