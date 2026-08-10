@@ -1,9 +1,10 @@
 import './PropertyCard.css'
 
 function parseFirstPhoto(photos) {
+    if (!photos) return "";
     try {
-        const parsedPhotos = JSON.parse(photos || "[]");
-        return parsedPhotos.length > 0 ? parsedPhotos[0] : "";
+        const parsedPhotos = JSON.parse(photos);
+        return Array.isArray(parsedPhotos) ? parsedPhotos[0] : "";
     }
     catch (error) {
         return "";
@@ -12,7 +13,7 @@ function parseFirstPhoto(photos) {
 
 function PropertyCard({ property }) {
     const photo = parseFirstPhoto(property.L_Photos);
-    const price = property.L_SystemPrice;
+    const price = property.L_SystemPrice.toLocaleString('en-US');
     const address = property.L_Address;
     const city = property.L_City;
     const state = property.L_State;
@@ -22,11 +23,19 @@ function PropertyCard({ property }) {
 
     return (
         <div className='property-card'>
-            <img
-                className='property-card__photo'
-                src={photo}
-                alt={address}
-            />
+            <div className='property-card__visual'>
+                {photo ? (
+                    <img
+                        className='property-card__photo'
+                        src={photo}
+                        alt={address}
+                    />
+                ) : (
+                    <div className='property-card__nophoto'>
+                        *Photo unavailable*
+                    </div>
+                )}
+            </div>
             <div className='property-card__info'>
                 <div className='property-card__price'>${price}</div>
                 <div className='property-card__address'>{address}</div>
