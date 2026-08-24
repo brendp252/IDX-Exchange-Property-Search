@@ -1,0 +1,17 @@
+.property-filters {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.property-filters__input {
+    margin-right: 5px;
+}
+
+.property-filters__select {
+    margin-right: 5px;
+}
+
+.property-filters__button {
+    font-weight: bold;
+    margin-right: 5px;
+}
