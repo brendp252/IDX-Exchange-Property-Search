@@ -1,0 +1,21 @@
+.property-detail-page {
+    border: 1px solid #000;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    justify-content: space-evenly;
+    padding: 0.5rem;
+}
+
+.property-detail-page__photo {
+    margin: 10px;
+}
+
+.property-detail-page__info {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+}

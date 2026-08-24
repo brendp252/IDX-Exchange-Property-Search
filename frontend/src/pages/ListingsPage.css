@@ -1,0 +1,16 @@
+.listings-page {
+    background-color: #fff;
+    color: #000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.listings-page__count {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.listings-page__results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
