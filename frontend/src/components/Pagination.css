@@ -1,0 +1,27 @@
+.pagination {
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.pagination__button {
+    background-color: #fff;
+    border: none;
+    font: inherit;
+    margin-right: 2.5px;
+}
+
+.pagination__current-page-button {
+    background-color: #fff;
+    border: none;
+    font: inherit;
+    font-weight: bold;
+    margin-right: 2.5px;
+}
+
+.pagination__button:hover {
+    color: red;
+}
+
+.pagination__ellipsis {
+    margin-right: 2.5px;
+}

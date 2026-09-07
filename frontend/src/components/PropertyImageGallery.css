@@ -1,0 +1,26 @@
+.gallery {
+    background-color: hsla(0, 0%, 0%, 0.154);
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.gallery__main-image {
+    border-radius: 15px;
+    display: block;
+    height: 400px;
+    margin: 0.5rem auto;
+    object-fit: cover;
+}
+
+.gallery__thumbnail-strip {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.gallery__small-image {
+    border-radius: 15px;
+    height: 100px;
+    margin-top: 0.5rem;
+    object-fit: cover;
+    width: 10%;
+}

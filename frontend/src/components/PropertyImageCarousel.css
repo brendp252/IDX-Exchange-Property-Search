@@ -1,0 +1,33 @@
+.carousel__photo {
+    border-radius: 15px;
+    height: 200px;
+    margin-top: 0.5rem;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* TO-DO: Fix height when photo is unavailable */
+.carousel__nophoto {
+    margin-top: 0.5rem;
+    text-align: center;
+    width: 100%;
+}
+
+.carousel__controls {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 5px;
+}
+
+.carousel__button {
+    background-color: inherit;
+    border: none;
+}
+
+.carousel__button:hover {
+    color: red;
+}
+
+.carousel__counter {
+    margin-left: 5px;
+}
