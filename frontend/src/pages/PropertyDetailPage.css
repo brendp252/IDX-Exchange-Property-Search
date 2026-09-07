@@ -1,0 +1,47 @@
+.property-detail-page {
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    justify-content: space-evenly;
+    padding: 0.5rem;
+}
+
+.property-detail-page__photo {
+    margin: 10px;
+}
+
+.property-detail-page__info {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 2rem;
+    justify-content: center;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.property-detail-page__features {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.property-detail-page__features li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.property-detail-page__additional {
+    text-align: center;
+}
+
+.property-detail-page__desc {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.property-detail-page__openhouses {
+    text-align: center;
+}
+
+.property-detail-page__location {
+    text-align: center;
+}
