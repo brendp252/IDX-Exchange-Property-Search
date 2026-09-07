@@ -11,11 +11,13 @@ router.get("/", async(req, res) => {
             maxPrice,
             beds,
             baths,
+            sortBy,
+            sortOrder,
             limit = "20",
             offset = "0"
         } = req.query;
 
-        // Query parameter handling
+        // Standard query parameter handling
 
         let sql = "SELECT * FROM rets_property WHERE 1 = 1";
         let countSql = "SELECT COUNT(*) AS total FROM rets_property WHERE 1 = 1";
@@ -36,7 +38,7 @@ router.get("/", async(req, res) => {
         if (minPrice) {
             const minPriceInt = Number(minPrice);
             if (!Number.isInteger(minPriceInt) || minPriceInt < 0) {
-                res.status(400).json({ error: "minPrice must be a nonnegative integer" });
+                return res.status(400).json({ error: "minPrice must be a nonnegative integer" });
             }
             sql += " AND L_SystemPrice >= ?";
             countSql += " AND L_SystemPrice >= ?";
@@ -46,7 +48,7 @@ router.get("/", async(req, res) => {
         if (maxPrice) {
             const maxPriceInt = Number(maxPrice);
             if (!Number.isInteger(maxPriceInt) || maxPriceInt < 0) {
-                res.status(400).json({ error: "maxPrice must be a nonnegative integer" });
+                return res.status(400).json({ error: "maxPrice must be a nonnegative integer" });
             }
             sql += " AND L_SystemPrice <= ?";
             countSql += " AND L_SystemPrice <= ?";
@@ -56,7 +58,7 @@ router.get("/", async(req, res) => {
         if (beds) {
             const bedsInt = Number(beds);
             if (!Number.isInteger(bedsInt) || bedsInt < 0) {
-                res.status(400).json({ error: "beds must be a nonnegative integer" });
+                return res.status(400).json({ error: "beds must be a nonnegative integer" });
             }
             sql += " AND L_Keyword2 = ?";
             countSql += " AND L_Keyword2 = ?";
@@ -66,7 +68,7 @@ router.get("/", async(req, res) => {
         if (baths) {
             const bathsInt = Number(baths);
             if (!Number.isInteger(bathsInt) || bathsInt < 0) {
-                res.status(400).json({ error: "baths must be a nonnegative integer" });
+                return res.status(400).json({ error: "baths must be a nonnegative integer" });
             }
             sql += " AND LM_Dec_3 = ?";
             countSql += " AND LM_Dec_3 = ?";
@@ -74,25 +76,48 @@ router.get("/", async(req, res) => {
         }
 
         const [count] = await pool.query(countSql, params);
+
+        // Sorting handling
+
+        const sortWhitelist = [
+            "L_SystemPrice",
+            "ListingContractDate",
+            "LM_Int2_3",
+            "L_Keyword2"
+        ];
+
+        if (sortBy) {
+            if (!sortWhitelist.includes(sortBy)) {
+                return res.status(400).json({ error: "invalid sort parameter" });
+            }
+            sql += ` ORDER BY ${sortBy}`;
+        }
+
+        if (sortOrder) {
+            if (sortOrder !== "ASC" && sortOrder !== "DESC") {
+                return res.status(400).json({ error: "invalid sort order, use ASC or DESC" })
+            }
+            sql += ` ${sortOrder}`;
+        }
         
-        // Total count finished: now apply limit and offset
+        // Apply limit and offset
 
         const limitInt = Number(limit);
         if (!Number.isInteger(limitInt) || limitInt < 1 || limitInt > 100) {
-            res.status(400).json({ error: "limit must be an integer between 1 and 100, inclusive" });
+            return res.status(400).json({ error: "limit must be an integer between 1 and 100, inclusive" });
         }
         sql += " LIMIT ?";
         params.push(limitInt);
 
         const offsetInt = Number(offset);
         if (!Number.isInteger(offsetInt) || offsetInt < 0) {
-            res.status(400).json({ error: "offset must be a nonnegative integer" });
+            return res.status(400).json({ error: "offset must be a nonnegative integer" });
         }
         sql += " OFFSET ?";
         params.push(offsetInt);
 
         const [rows] = await pool.query(sql, params);
-        res.json({ 
+        return res.json({ 
             total: count[0].total,
             limit: limitInt,
             offset: offsetInt,
@@ -101,7 +126,7 @@ router.get("/", async(req, res) => {
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Server error" });
+        return res.status(500).json({ error: "Server error" });
     }
 });
 
@@ -111,7 +136,7 @@ router.get("/:id/openhouses", async(req, res) => {
 
         const idFormat = /^\d{9,10}$/;
         if (!idFormat.test(id)) {
-            res.status(400).json({ error: "IDs must be 9 or 10 digits" });
+            return res.status(400).json({ error: "IDs must be 9 or 10 digits" });
         }
 
         const sql = "SELECT all_data FROM rets_openhouse WHERE L_ListingID = ?";
@@ -119,13 +144,13 @@ router.get("/:id/openhouses", async(req, res) => {
 
         const [rows] = await pool.query(sql, params);
         if (rows.length === 0) {
-            res.status(404).json({ error: "ID not found" });
+            return res.status(404).json({ error: "ID not found" });
         }
-        return res.json(rows);
+        res.json(rows);
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Server error" });
+        return res.status(500).json({ error: "Server error" });
     }
 });
 
@@ -135,7 +160,7 @@ router.get("/:id", async(req, res) => {
         
         const idFormat = /^\d{9,10}$/;
         if (!idFormat.test(id)) {
-            res.status(400).json({ error: "IDs must be 9 or 10 digits" });
+            return res.status(400).json({ error: "IDs must be 9 or 10 digits" });
         }
 
         const sql = "SELECT * FROM rets_property WHERE L_ListingID = ?";
@@ -143,13 +168,13 @@ router.get("/:id", async(req, res) => {
 
         const [rows] = await pool.query(sql, params);
         if (rows.length === 0) {
-            res.status(404).json({ error: "ID not found" });
+            return res.status(404).json({ error: "ID not found" });
         }
-        return res.json(rows);
+        res.json(rows[0]);
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Server error" });
+        return res.status(500).json({ error: "Server error" });
     }
 });
 
