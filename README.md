@@ -1,4 +1,4 @@
-# IDX-Exchange-Property-Search
+# Property Search Application
 A Zillow/Redfin-style property search application backed by MLS data, including:
 - A searchable, filterable listings page with pagination
 - A property detail page with photos, location, and open house schedule
