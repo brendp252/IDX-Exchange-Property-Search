@@ -1,0 +1,25 @@
+.property-filters {
+    background-color: hsla(0, 0%, 50%, 0.2);
+    border: 1px solid gray;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5em;
+}
+
+.property-filters__input {
+    font-family: inherit;
+    margin-right: 5px;
+}
+
+.property-filters__select {
+    font-family: inherit;
+    margin-right: 5px;
+}
+
+.property-filters__button {
+    font-family: inherit;
+    font-weight: bold;
+    margin-right: 5px;
+}
