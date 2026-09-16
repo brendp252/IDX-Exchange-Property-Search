@@ -1,4 +1,5 @@
 # Property Search Application
+
 A Zillow/Redfin-style property search application for California residential listings backed by MLS data, including:
 - A searchable, filterable listings page with pagination
 - Sorting controls for price, listing date, square footage, and beds
@@ -8,4 +9,13 @@ This repository contains the full product path: the backend running on a local M
 
 The following README explains the system design, installation process, and example use cases of the application.
 
-## Built With:
+## System Design
+
+### Technical Stack
+- Backend: Node.js + Express
+- Frontend: React (Vite)
+- Database: MySQL 8 running in Docker
+- Testing: Jest + Babel
+
+### Data Flow
+*React (port 3000) --> Express API (port 5000) --> MySQL (port 3306)*
