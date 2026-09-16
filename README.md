@@ -7,7 +7,7 @@ A Zillow/Redfin-style property search application for California residential lis
   
 This repository contains the full product path: the backend running on a local MySQL database, the frontend running on React, the Node/Express REST API connecting React to MySQL, and tests.
 
-The following README explains the system design, installation process, and example use cases of the application.
+The following README explains the system design, setup process, and example use cases of the application.
 
 ## System Design
 
@@ -19,3 +19,14 @@ The following README explains the system design, installation process, and examp
 
 ### Data Flow
 `React (port 3000) --> Express API (port 5000) --> MySQL (port 3306)`
+
+## Setup Process
+
+### Prerequisites
+Before proceeding with setup, make sure you install:
+- Node.js and npm
+- Git
+- MySQL 8
+- Docker Desktop (recommended)
+
+This application relies on two SQL datasets, titled "rets_property" and "rets_openhouse".
