@@ -18,4 +18,4 @@ The following README explains the system design, installation process, and examp
 - Testing: Jest + Babel
 
 ### Data Flow
-*React (port 3000) --> Express API (port 5000) --> MySQL (port 3306)*
+`React (port 3000) --> Express API (port 5000) --> MySQL (port 3306)`
