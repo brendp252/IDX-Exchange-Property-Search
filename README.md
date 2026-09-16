@@ -89,7 +89,13 @@ npm run dev
 ```
 The frontend will now run at `http://localhost:3000` with automatic restart upon updates.
 
-## Usage
+## Example Usage
+
+To search for all houses in the dataset in Oroville, CA, that have a listing price of at least $600,000, type the values into the corresponding filters and click "Search":
+
+<img width="1440" height="812" alt="Screenshot 2026-09-15 at 10 32 23 PM" src="https://github.com/user-attachments/assets/3bdbd24e-f7d5-4bf0-ac11-ad38e4e203b7" />
+
+After the results load, you can click into each property to learn more.
 
 ## License
 
