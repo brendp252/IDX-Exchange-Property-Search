@@ -30,3 +30,6 @@ Before proceeding with setup, make sure you install:
 - Docker Desktop (recommended)
 
 This application relies on two SQL datasets, titled "rets_property" and "rets_openhouse".
+
+### 1. Clone the Repository
+``
