@@ -7,3 +7,5 @@ A Zillow/Redfin-style property search application for California residential lis
 This repository contains the full product path: the backend running on a local MySQL database, the frontend running on React, the Node/Express REST API connecting React to MySQL, and tests.
 
 The following README explains the system design, installation process, and example use cases of the application.
+
+## Built With:
