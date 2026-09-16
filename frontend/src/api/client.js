@@ -3,26 +3,26 @@ export async function fetchPropertyDetail(id) {
         const url = `http://localhost:5000/api/properties/${id}`;
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Failed to fetch ${url}`);
+            throw new Error("Failed to fetch property details");
         }
         return response.json();
     }
     catch (error) {
-        throw new Error("Unable to reach server");
+        throw new Error("Failed to fetch property details");
     }
 }
 
-export async function fetchPropertyOpenhouses(id) {
+export async function fetchPropertyOpenHouses(id) {
     try {
         const url = `http://localhost:5000/api/properties/${id}/openhouses`;
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Failed to fetch ${url}`);
+            throw new Error("Failed to fetch property open houses");
         }
         return response.json();
     }
     catch (error) {
-        throw new Error("Unable to reach server");
+        throw new Error("Failed to fetch property open houses");
     }
 }
 
@@ -32,11 +32,11 @@ export async function fetchProperties(params = {}) {
         const url = `http://localhost:5000/api/properties?${query}`;
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Failed to fetch ${url}`);
+            throw new Error("Failed to fetch properties");
         }
         return response.json();
     }
     catch (error) {
-        throw new Error("Unable to reach server");
+        throw new Error("Failed to fetch properties");
     }
 }
