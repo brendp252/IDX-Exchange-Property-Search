@@ -29,7 +29,10 @@ Before proceeding with setup, make sure you install:
 - MySQL 8
 - Docker Desktop (recommended)
 
-This application relies on two SQL datasets, titled "rets_property" and "rets_openhouse".
+This application relies on two SQL datasets titled "rets_property" and "rets_openhouse".
 
 ### 1. Clone the Repository
-``
+`git clone https://github.com/brendp252/IDX-Exchange-Property-Search.git
+ cd IDX-Exchange-Property-Search`
+
+### 2. Set Up the Datasets
