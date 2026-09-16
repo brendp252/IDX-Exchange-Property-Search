@@ -38,3 +38,20 @@ cd IDX-Exchange-Property-Search
 ```
 
 ### 2. Set Up the Datasets
+Import the datasets into your database. If you are using Docker, for example, start a MySQL 8 container on port 3306 with a new database. Then, pipe the datasets in directly while the container is running:
+`docker exec -i <container-name> mysql -u <username> -p<password> <db-name> < path/rets_file.sql`
+To verify that you successfully imported your datasets, run simple checks:
+```
+SELECT COUNT(*)
+FROM rets_property;
+
+SELECT COUNT(*)
+FROM rets_openhouse;
+```
+
+### 3. Set Up the Backend
+First, install necessary dependencies:
+```
+cd backend
+npm install
+```
