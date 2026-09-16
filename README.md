@@ -57,3 +57,40 @@ First, install necessary dependencies:
 cd backend
 npm install
 ```
+Then, create a .env file with your database credentials and port:
+```
+PORT=5000
+NODE_ENV=development
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=your_db_name
+DB_USER=your_mysql_username
+DB_PASS=your_mysql_password
+```
+
+### 4. Start the Backend
+```
+npm run dev
+```
+The backend will now run at `http://localhost:5000` with automatic restart upon updates. To verify that the backend is connected to the database, run the health check:
+```
+curl "http://localhost:5000/api/health"
+```
+
+### 5. Set Up the Frontend
+```
+cd frontend
+npm install
+```
+
+### 6. Start the Frontend
+```
+npm run dev
+```
+The frontend will now run at `http://localhost:3000` with automatic restart upon updates.
+
+## Usage
+
+## License
+
+This project is currently intended for educational and internship development purposes.
