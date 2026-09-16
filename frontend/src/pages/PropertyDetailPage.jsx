@@ -95,11 +95,6 @@ export default function PropertyDetailPage() {
                         <div>
                             {property.L_Keyword2} beds, {property.LM_Dec_3} bathrooms, {sqft} square feet
                         </div>
-                        {/* <ul className='property-detail-page__features'>
-                            <li>{property.L_Keyword2} beds</li>
-                            <li>{property.LM_Dec_3} bathrooms</li>
-                            <li>{sqft} square feet</li>
-                        </ul> */}
                     </div>
 
                     <div className='property-detail-page__additional'>
